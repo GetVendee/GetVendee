@@ -8,111 +8,80 @@
   ----------
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="380" height="120" viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg" style="background:transparent">
-  <!-- Premium Chrome Gradient -->
+  <!-- Clean Chrome Gradient -->
   <defs>
-    <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#E2E8F0"/>
-      <stop offset="20%"  stop-color="#F7FAFC"/>
-      <stop offset="50%"  stop-color="#EDF2F7"/>
-      <stop offset="80%"  stop-color="#F7FAFC"/>
+    <linearGradient id="chrome" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F7FAFC"/>
+      <stop offset="50%" stop-color="#EDF2F7"/>
       <stop offset="100%" stop-color="#E2E8F0"/>
     </linearGradient>
 
-    <!-- Holographic Edge -->
-    <linearGradient id="holoEdge" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%"   stop-color="#667EEA" stop-opacity="0.8"/>
-      <stop offset="40%"  stop-color="#764BA2" stop-opacity="0.9"/>
-      <stop offset="60%"  stop-color="#764BA2" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#667EEA" stop-opacity="0.8"/>
+    <!-- Electric Blue Edge -->
+    <linearGradient id="edge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#667EEA"/>
+      <stop offset="100%" stop-color="#5A67D8"/>
     </linearGradient>
 
-    <!-- Inner Prism Glow -->
-    <filter id="prism">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feFlood flood-color="#5A67D8" flood-opacity="0.35"/>
+    <!-- Soft Inner Glow -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-color="#5A67D8" flood-opacity="0.3"/>
       <feComposite in2="blur" operator="in"/>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
 
-    <!-- Bevel & Shine -->
-    <filter id="bevel">
-      <feSpecularLighting result="spec" specularConstant="1.5" specularExponent="25" surfaceScale="4" lighting-color="#FFF">
-        <fePointLight x="-5000" y="-10000" z="15000"/>
-      </feSpecularLighting>
-      <feComposite in="spec" in2="SourceAlpha" operator="in"/>
-      <feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
-    </filter>
-
-    <!-- Deep Shadow -->
+    <!-- Subtle Shadow -->
     <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.3"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.2"/>
     </filter>
   </defs>
 
-  <!-- THE V: A Sculpted, Infinite Monogram -->
-  <g transform="translate(70,60)" filter="url(#shadow)">
-    <!-- Outer Beveled V Frame -->
-    <path d="M -45,-25 
-             L -15,-25 
-             L 0,15 
-             L 15,-25 
-             L 45,-25 
-             L 25,20 
-             L 0,-10 
-             L -25,20 
+  <!-- THE V: Bold, Clean, Unmistakable -->
+  <g transform="translate(80,60)" filter="url(#shadow)">
+    <path d="M -40, -30 
+             L 0, 25 
+             L 40, -30 
+             L 30, -30 
+             L 0, 15 
+             L -30, -30 
              Z" 
           fill="url(#chrome)" 
-          filter="url(#bevel)"
-          stroke="url(#holoEdge)" 
-          stroke-width="2"/>
-
-    <!-- Inner Negative Space V (creates depth) -->
-    <path d="M -30,-10 
-             L -10,-10 
-             L 0,5 
-             L 10,-10 
-             L 30,-10 
-             L 15,12 
-             L 0,-3 
-             L -15,12 
-             Z" 
-          fill="#1A202C"/>
-
-    <!-- Prism Glow in the Core -->
-    <path d="M -5,-15 L 5,-15 L 0,-5 Z" 
-          fill="#5A67D8" 
-          opacity="0.6" 
-          filter="url(#prism)"/>
+          stroke="url(#edge)" 
+          stroke-width="3"/>
+    
+    <!-- Inner Highlight -->
+    <path d="M -25, -15 
+             L 0, 10 
+             L 25, -15" 
+          fill="none" 
+          stroke="#FFFFFF" 
+          stroke-width="4" 
+          opacity="0.6"/>
+    
+    <!-- Core Glow -->
+    <circle cx="0" cy="-5" r="6" fill="#5A67D8" filter="url(#glow)"/>
   </g>
 
-  <!-- VEND EE: The Name, Etched in Power -->
+  <!-- VEND EE: Integrated with the V -->
   <text x="140" y="78" 
-        font-family="'Montserrat', 'Helvetica Neue', sans-serif" 
+        font-family="Montserrat, Helvetica, Arial, sans-serif" 
         font-size="58" 
         font-weight="900" 
         fill="#1A202C" 
-        letter-spacing="-2"
-        style="text-transform: uppercase; font-variant: small-caps;">
+        letter-spacing="-1.8"
+        style="text-transform: uppercase;">
     endee
   </text>
 
-  <!-- Invisible "V" in "Vendee" – Subtle Genius -->
+  <!-- The V is the "V" in Vendee — Ghosted -->
   <text x="140" y="78" 
-        font-family="'Montserrat', sans-serif" 
+        font-family="Montserrat, sans-serif" 
         font-size="58" 
         font-weight="900" 
         fill="#5A67D8" 
-        opacity="0.25"
-        letter-spacing="-2">
+        letter-spacing="-1.8">
     V
   </text>
-
-  <!-- Micro-Engraved Texture -->
-  <pattern id="engrave" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-    <path d="M 0,3 L 6,3" stroke="#000" stroke-width="0.5" opacity="0.03"/>
-    <path d="M 3,0 L 3,6" stroke="#000" stroke-width="0.5" opacity="0.03"/>
-  </pattern>
-  <rect x="0" y="0" width="380" height="120" fill="url(#engrave)"/>
 </svg>
   
 ----------
