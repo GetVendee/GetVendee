@@ -3,93 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?xml version="10" encoding="UTF-8"?>
+ 
 
-  -----------
- <?xml version="1.0" encoding="UTF-8"?>
+  ----------
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="380" height="120" viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg" style="background:transparent">
-  <!-- Premium Metallic Gradient -->
+  <!-- Premium Chrome Gradient -->
   <defs>
-    <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#A0AEC0"/>
-      <stop offset="15%"  stop-color="#E2E8F0"/>
-      <stop offset="50%"  stop-color="#CBD5E0"/>
-      <stop offset="85%"  stop-color="#E2E8F0"/>
-      <stop offset="100%" stop-color="#A0AEC0"/>
+    <linearGradient id="chrome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#E2E8F0"/>
+      <stop offset="20%"  stop-color="#F7FAFC"/>
+      <stop offset="50%"  stop-color="#EDF2F7"/>
+      <stop offset="80%"  stop-color="#F7FAFC"/>
+      <stop offset="100%" stop-color="#E2E8F0"/>
     </linearGradient>
 
-    <!-- Holographic Shine -->
-    <linearGradient id="holo" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="45%"  stop-color="#FFFFFF" stop-opacity="0.6"/>
-      <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.9"/>
-      <stop offset="55%"  stop-color="#FFFFFF" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    <!-- Holographic Edge -->
+    <linearGradient id="holoEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#667EEA" stop-opacity="0.8"/>
+      <stop offset="40%"  stop-color="#764BA2" stop-opacity="0.9"/>
+      <stop offset="60%"  stop-color="#764BA2" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#667EEA" stop-opacity="0.8"/>
     </linearGradient>
 
-    <!-- Inner Glow -->
-    <filter id="innerGlow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feFlood flood-color="#4C51BF" flood-opacity="0.4"/>
+    <!-- Inner Prism Glow -->
+    <filter id="prism">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feFlood flood-color="#5A67D8" flood-opacity="0.35"/>
       <feComposite in2="blur" operator="in"/>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
 
-    <!-- Outer Shadow -->
-    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000" flood-opacity="0.25"/>
+    <!-- Bevel & Shine -->
+    <filter id="bevel">
+      <feSpecularLighting result="spec" specularConstant="1.5" specularExponent="25" surfaceScale="4" lighting-color="#FFF">
+        <fePointLight x="-5000" y="-10000" z="15000"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in"/>
+      <feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
     </filter>
 
-    <!-- Bevel Filter -->
-    <filter id="bevel">
-      <feSpecularLighting result="spec" specularConstant="1.2" specularExponent="20" surfaceScale="3" lighting-color="#FFF">
-        <fePointLight x="-5000" y="-10000" z="12000"/>
-      </feSpecularLighting>
-      <feComposite in="spec" in2="SourceAlpha" operator="in" result="spec"/>
-      <feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+    <!-- Deep Shadow -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity="0.3"/>
     </filter>
   </defs>
 
-  <!-- Core Monogram: Interlocked V + Infinity Loop -->
-  <g transform="translate(40,60)" filter="url(#shadow)">
-    <!-- Outer Ring -->
-    <path d="M 0,0 
-             m -38,0 
-             a 38,38 0 1,1 76,0 
-             a 38,38 0 1,1 -76,0" 
-          fill="none" stroke="url(#metal)" stroke-width="7"/>
-
-    <!-- Inner Infinity V -->
-    <path d="M -20,-12 
-             Q -10,-20 0,-12 
-             T 20,-12 
-             Q 10,-20 0,-28 
-             T -20,-12 
+  <!-- THE V: A Sculpted, Infinite Monogram -->
+  <g transform="translate(70,60)" filter="url(#shadow)">
+    <!-- Outer Beveled V Frame -->
+    <path d="M -45,-25 
+             L -15,-25 
+             L 0,15 
+             L 15,-25 
+             L 45,-25 
+             L 25,20 
+             L 0,-10 
+             L -25,20 
              Z" 
-          fill="#1A202C" 
-          filter="url(#innerGlow)"/>
+          fill="url(#chrome)" 
+          filter="url(#bevel)"
+          stroke="url(#holoEdge)" 
+          stroke-width="2"/>
 
-    <!-- Holographic Sweep -->
-    <rect x="-50" y="-40" width="100" height="8" fill="url(#holo)" opacity="0.7" filter="url(#bevel)"/>
+    <!-- Inner Negative Space V (creates depth) -->
+    <path d="M -30,-10 
+             L -10,-10 
+             L 0,5 
+             L 10,-10 
+             L 30,-10 
+             L 15,12 
+             L 0,-3 
+             L -15,12 
+             Z" 
+          fill="#1A202C"/>
+
+    <!-- Prism Glow in the Core -->
+    <path d="M -5,-15 L 5,-15 L 0,-5 Z" 
+          fill="#5A67D8" 
+          opacity="0.6" 
+          filter="url(#prism)"/>
   </g>
 
-  <!-- Enterprise-Grade Text: Vendee -->
-  <text x="110" y="78" 
-        font-family="'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif" 
-        font-size="56" 
+  <!-- VEND EE: The Name, Etched in Power -->
+  <text x="140" y="78" 
+        font-family="'Montserrat', 'Helvetica Neue', sans-serif" 
+        font-size="58" 
         font-weight="900" 
         fill="#1A202C" 
-        letter-spacing="-1.5"
-        style="font-variant: small-caps; text-transform: uppercase;">
-    Vendee
+        letter-spacing="-2"
+        style="text-transform: uppercase; font-variant: small-caps;">
+    endee
   </text>
 
-  <!-- Subtle Micro-Texture (executive polish) -->
-  <pattern id="grain" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-    <rect x="0" y="0" width="2" height="2" fill="#000" opacity="0.02"/>
+  <!-- Invisible "V" in "Vendee" – Subtle Genius -->
+  <text x="140" y="78" 
+        font-family="'Montserrat', sans-serif" 
+        font-size="58" 
+        font-weight="900" 
+        fill="#5A67D8" 
+        opacity="0.25"
+        letter-spacing="-2">
+    V
+  </text>
+
+  <!-- Micro-Engraved Texture -->
+  <pattern id="engrave" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+    <path d="M 0,3 L 6,3" stroke="#000" stroke-width="0.5" opacity="0.03"/>
+    <path d="M 3,0 L 3,6" stroke="#000" stroke-width="0.5" opacity="0.03"/>
   </pattern>
-  <rect x="0" y="0" width="380" height="120" fill="url(#grain)"/>
+  <rect x="0" y="0" width="380" height="120" fill="url(#engrave)"/>
 </svg>
+  
 ----------
   
   <title>Vendee – Never run out again.</title>
