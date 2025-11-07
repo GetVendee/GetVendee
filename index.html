@@ -6,83 +6,63 @@
  
 
   ----------
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="380" height="120" viewBox="0 0 380 120" xmlns="http://www.w3.org/2000/svg" style="background:transparent">
-  <!-- Clean Chrome Gradient -->
-  <defs>
-    <linearGradient id="chrome" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#F7FAFC"/>
-      <stop offset="50%" stop-color="#EDF2F7"/>
-      <stop offset="100%" stop-color="#E2E8F0"/>
-    </linearGradient>
+<!-- Vendee logo (SVG + CSS) — paste where you want the logo to appear -->
+<style>
+  /* Vendee logo styles */
+  .vendee-logo { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+  .vendee-mark { width: 56px; height: 56px; display: inline-block; flex-shrink: 0; }
+  .vendee-word { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-weight: 700; font-size: 28px; color: #111827; letter-spacing: -0.02em; line-height: 1; }
+  .vendee-tag { display:block; font-weight:600; font-size:12px; color:#6B7280; margin-top:2px; font-weight:500; letter-spacing:0.04em; }
+  /* Accent color */
+  .vendee-accent { fill:#008C86; stroke:#008C86; }
+  .vendee-accent-2 { fill:#06A590; } /* slightly lighter for gradient feel */
 
-    <!-- Electric Blue Edge -->
-    <linearGradient id="edge" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#667EEA"/>
-      <stop offset="100%" stop-color="#5A67D8"/>
-    </linearGradient>
+  /* Simple hover/enter animation */
+  .vendee-logo:hover .vendee-mark .mark-loop { transform: translateX(4px) rotate(6deg); }
+  .vendee-mark .mark-loop { transition: transform 320ms cubic-bezier(.2,.9,.2,1); transform-origin: center; }
+  .vendee-mark .mark-v { transition: transform 320ms cubic-bezier(.2,.9,.2,1); }
+  .vendee-logo:active .vendee-mark .mark-v { transform: scale(0.98); }
 
-    <!-- Soft Inner Glow -->
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feFlood flood-color="#5A67D8" flood-opacity="0.3"/>
-      <feComposite in2="blur" operator="in"/>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+  /* Responsive sizes */
+  @media (max-width:520px){
+    .vendee-mark{ width:46px; height:46px; }
+    .vendee-word{ font-size:22px; }
+  }
+</style>
 
-    <!-- Subtle Shadow -->
-    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.2"/>
-    </filter>
-  </defs>
+<a href="/" class="vendee-logo" aria-label="Vendee – Never run out again.">
+  <!-- SVG mark: a stylized V with a flowing loop that hints at "replenish/flow" -->
+  <svg class="vendee-mark" viewBox="0 0 100 100" role="img" aria-hidden="true" focusable="false">
+    <!-- Circular soft background -->
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1">
+        <stop offset="0" stop-color="#00A38F"/>
+        <stop offset="1" stop-color="#008C86"/>
+      </linearGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#008C86" flood-opacity="0.08"/>
+      </filter>
+    </defs>
 
-  <!-- THE V: Bold, Clean, Unmistakable -->
-  <g transform="translate(80,60)" filter="url(#shadow)">
-    <path d="M -40, -30 
-             L 0, 25 
-             L 40, -30 
-             L 30, -30 
-             L 0, 15 
-             L -30, -30 
-             Z" 
-          fill="url(#chrome)" 
-          stroke="url(#edge)" 
-          stroke-width="3"/>
-    
-    <!-- Inner Highlight -->
-    <path d="M -25, -15 
-             L 0, 10 
-             L 25, -15" 
-          fill="none" 
-          stroke="#FFFFFF" 
-          stroke-width="4" 
-          opacity="0.6"/>
-    
-    <!-- Core Glow -->
-    <circle cx="0" cy="-5" r="6" fill="#5A67D8" filter="url(#glow)"/>
-  </g>
+    <!-- soft rounded square backdrop -->
+    <rect x="6" y="6" width="88" height="88" rx="18" fill="#ffffff" stroke="#E6F6F3" stroke-width="1.5" />
+    <!-- V shape -->
+    <g transform="translate(10,10) scale(0.8)">
+      <path class="mark-v" d="M12 6 L28 66 L44 6" fill="none" stroke="url(#g1)" stroke-width="6.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- flowing loop joining the V to suggest continuity -->
+      <path class="mark-loop" d="M44 10 C58 18, 70 34, 56 50 C44 64, 28 62, 20 56" fill="none" stroke="#06A590" stroke-width="6.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- little package dot to imply delivery -->
+      <circle cx="58" cy="48" r="3.8" fill="#006E63" />
+    </g>
+  </svg>
 
-  <!-- VEND EE: Integrated with the V -->
-  <text x="140" y="78" 
-        font-family="Montserrat, Helvetica, Arial, sans-serif" 
-        font-size="58" 
-        font-weight="900" 
-        fill="#1A202C" 
-        letter-spacing="-1.8"
-        style="text-transform: uppercase;">
-    endee
-  </text>
+  <!-- Wordmark -->
+  <div>
+    <span class="vendee-word">Vendee</span>
+    <span class="vendee-tag">Never run out again.</span>
+  </div>
+</a>
 
-  <!-- The V is the "V" in Vendee — Ghosted -->
-  <text x="140" y="78" 
-        font-family="Montserrat, sans-serif" 
-        font-size="58" 
-        font-weight="900" 
-        fill="#5A67D8" 
-        letter-spacing="-1.8">
-    V
-  </text>
-</svg>
   
 ----------
   
