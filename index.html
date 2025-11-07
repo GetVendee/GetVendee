@@ -3,6 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?xml version="10" encoding="UTF-8"?>
+<svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg" style="background: transparent;">
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="vendeeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B46C1" /> <!-- Purple -->
+      <stop offset="100%" stop-color="#3182CE" /> <!-- Blue -->
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Geometric Icon (V-shaped arrow morphing into a check) -->
+  <g transform="translate(20, 50)">
+    <path d="M 0,20 L 25,-10 L 50,20 L 40,20 L 25,0 L 10,20 Z" 
+          fill="url(#vendeeGradient)" 
+          filter="url(#shadow)" 
+          stroke="#1A202C" 
+          stroke-width="1.5"/>
+    <path d="M 25,0 L 35,10 L 28,17" 
+          fill="none" 
+          stroke="#FFFFFF" 
+          stroke-width="3" 
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- Text: Vendee -->
+  <text x="80" y="62" 
+        font-family="Segoe UI, system-ui, -apple-system, sans-serif" 
+        font-size="38" 
+        font-weight="700" 
+        fill="#1A202C" 
+        letter-spacing="0.5">
+    Vendee
+  </text>
+
+  <!-- Tagline (optional, remove if not needed) -->
+  <!-- <text x="80" y="78" 
+        font-family="Segoe UI, system-ui, -apple-system, sans-serif" 
+        font-size="12" 
+        fill="#718096" 
+        letter-spacing="1">
+    Sell Smart
+  </text> -->
+</svg>
   <title>Vendee – Never run out again.</title>
   <style>
     body {
